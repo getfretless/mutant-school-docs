@@ -125,8 +125,6 @@
 
 <p>We have language bindings in raw HTTP, Ruby, and jQuery! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This documentation was created with <a href="https://github.com/tripit/slate">Slate</a>.</p>
-
           <h1 id="mutants">Mutants</h1>
 
 <aside class="notice">Mutants are people with genetic anomalies that grant them, for lack of a better word, superpowers. In <em>Mutant School</em>, mutants can be enrolled students, advisors, both, or neither.</aside>
@@ -332,12 +330,8 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad</td>
-</tr>
-<tr>
 <td>404</td>
-<td>Not Found &ndash; The specified mutant could not be found</td>
+<td>Not Found &ndash; There&rsquo;s no mutant with that ID.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -459,7 +453,15 @@
 
 <p><code class="prettyprint">POST https://mutant-school.herokuapp.com/api/v1/mutants</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -491,7 +493,7 @@
 <tr>
 <td>mutant[eligibility_ends_at]</td>
 <td>no</td>
-<td>Date when mutant is no longer eligible to enroll; must be a date that occurs after <code class="prettyprint">eligibility_begins_at</code></td>
+<td>Date when mutant is no longer eligible to enroll; must be a date that occurs after mutant[eligibility_begins_at]</td>
 </tr>
 <tr>
 <td>mutant[may_advise_beginning_at]</td>
@@ -510,7 +512,7 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -625,8 +627,9 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ID&gt;</code>
-<code class="prettyprint">PATCH https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">PUT https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ID&gt;</code></p>
+
+<p><code class="prettyprint">PATCH https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ID&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -642,7 +645,15 @@
 </tr>
 </tbody></table>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -693,11 +704,11 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified mutant could not be found.</td>
+<td>Not Found &ndash; There&rsquo;s no mutant with that ID.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -784,7 +795,7 @@
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the mutant to update</td>
+<td>The ID of the mutant to delete</td>
 </tr>
 </tbody></table>
 
@@ -797,12 +808,8 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
-</tr>
-<tr>
 <td>404</td>
-<td>Not Found &ndash; The specified mutant could not be found. It may have already been deleted.</td>
+<td>Not Found &ndash; There&rsquo;s no mutant with that ID. It may have already been deleted.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -994,10 +1001,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
-</tr>
-<tr>
 <td>404</td>
 <td>Not Found &ndash; The specified term could not be found.</td>
 </tr>
@@ -1121,7 +1124,15 @@
 </tr>
 </tbody></table>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -1152,7 +1163,7 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -1260,8 +1271,9 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT https://mutant-school.herokuapp.com/api/v1/terms/&lt;ID&gt;</code>
-<code class="prettyprint">PATCH https://mutant-school.herokuapp.com/api/v1/terms/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">PUT https://mutant-school.herokuapp.com/api/v1/terms/&lt;ID&gt;</code></p>
+
+<p><code class="prettyprint">PATCH https://mutant-school.herokuapp.com/api/v1/terms/&lt;ID&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1277,7 +1289,15 @@
 </tr>
 </tbody></table>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -1308,7 +1328,7 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.</td>
 </tr>
 <tr>
 <td>422</td>
@@ -1408,10 +1428,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
-</tr>
-<tr>
 <td>404</td>
 <td>Not Found &ndash; The specified term could not be found. It may have already been deleted.</td>
 </tr>
@@ -1421,7 +1437,7 @@
 </tr>
 </tbody></table>
 
-          <h1 id="enrollments">Enrollments</h1>
+          <h1 id="enrollments-by-mutant">Enrollments by Mutant</h1>
 
 <aside class="notice">Enrollments are, essentially, a relationship between a mutant and a term, indicating that the mutant has enrolled as a student for the given term.</aside>
 
@@ -1641,10 +1657,6 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
-</tr>
-<tr>
 <td>404</td>
 <td>Not Found &ndash; Either the mutant cannot be found, the enrollment cannot be found, or the enrollment is not associated with the mutant.</td>
 </tr>
@@ -1761,6 +1773,8 @@
 
 <p>This endpoint enrolls a mutant in a term.</p>
 
+<aside class="warning">Is this goofy system letting students enroll in terms that start before they&rsquo;re eligible or after they&rsquo;ve become ineligible? We should test for that. <em>&mdash; Boss Person</em></aside>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST https://mutant-school.herokuapp.com/api/v1/mutants/&lt;MUTANT_ID&gt;/enrollments</code></p>
@@ -1779,7 +1793,15 @@
 </tr>
 </tbody></table>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
 
 <table><thead>
 <tr>
@@ -1805,7 +1827,7 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing the term ID parameter, or the term ID could be invalid.</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1872,7 +1894,7 @@
 <p>Expected response: <strong>204 No Content</strong>.</p>
 </blockquote>
 
-<p>This endpoint retrieves a specific enrollment for a specific mutant.</p>
+<p>This endpoint deletes a specific enrollment for a specific mutant.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1905,12 +1927,877 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>404</td>
+<td>Not Found &ndash; Either the mutant cannot be found, the enrollment cannot be found (possibly because it was already deleted), or the enrollment is not associated with the mutant.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; It&rsquo;s probably our fault.</td>
+</tr>
+</tbody></table>
+
+          <h1 id="enrollments-by-term">Enrollments by Term</h1>
+
+<aside class="notice">Enrollments are, essentially, a relationship between a mutant and a term, indicating that the mutant has enrolled as a student for the given term.</aside>
+
+<h2 id="get-all-enrollments-for-a-specific-term">Get All Enrollments for a Specific Term</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/terms/2/enrollments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+
+
+</code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># Enrollments#index by Term (GET )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Enrollments#index by Term (GET https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>200 OK</strong>, with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"student"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fusionraptor"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating small, controlled fusion reactions"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Sloan"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"term"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-10T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-25T00:00:00.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-02T21:27:31.461Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-02T21:27:31.461Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all enrollments for the specified term.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://mutant-school.herokuapp.com/api/v1/terms/&lt;TERM_ID&gt;/enrollments</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TERM_ID</td>
+<td>The ID of the term for enrollment</td>
+</tr>
+</tbody></table>
+
+          <h2 id="get-a-specific-enrollment-for-a-specific-term">Get a Specific Enrollment for a Specific Term</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/terms/2/enrollments/5</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+
+
+</code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/5"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># Enrollments#show by Term (GET )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/5'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Enrollments#show by Term (GET https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/5)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/5"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"student"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fusionraptor"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating small, controlled fusion reactions"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Sloan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T00:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"term"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-10T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-25T00:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:00:43.628Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:00:43.628Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/5"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific enrollment for a specific term.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://mutant-school.herokuapp.com/api/v1/mutants/&lt;TERM_ID&gt;/enrollments/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TERM_ID</td>
+<td>The ID of the term of enrollment</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the enrollment to retrieve</td>
+</tr>
+</tbody></table>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; Either the term cannot be found, the enrollment cannot be found, or the enrollment is not associated with the term.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; It&rsquo;s probably our fault.</td>
+</tr>
+</tbody></table>
+
+          <h2 id="create-an-enrollment">Create an Enrollment</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/terms/2/enrollments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">30</span>
+
+<span class="p">{</span><span class="nt">"enrollment"</span><span class="p">:{</span><span class="nt">"mutant_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">}}</span><span class="w">
+</span></code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">enrollment</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">mutant_id</span><span class="se">\"</span><span class="s2">:1}}"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># Enrollments#create by Term (POST )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+    <span class="n">dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"enrollment"</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="s2">"mutant_id"</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="c1"># Add headers</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/json"</span>
+    <span class="c1"># Set header and body</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/json"</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="n">body</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Enrollments#create by Term (POST https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="s2">"enrollment"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"mutant_id"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>201 Created</strong>, with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"student"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fusionraptor"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating small, controlled fusion reactions"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Sloan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T00:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"term"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-10T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-25T00:00:00.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T06:39:48.319Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T06:39:48.319Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/12"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint enrolls a mutant in a term.</p>
+
+<aside class="warning">Is this goofy system letting students enroll in terms that start before they&rsquo;re eligible or after they&rsquo;ve become ineligible? We should test for that. Wait, I already said that earlier, didn&rsquo;t I? <em>&mdash; Boss Person</em></aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://mutant-school.herokuapp.com/api/v1/terms/&lt;TERM_ID&gt;/enrollments</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TERM_ID</td>
+<td>The ID of the term in which to enroll the mutant.</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enrollment[mutant_id]</td>
+<td>yes</td>
+<td>The ID of the mutant to be enrolled.</td>
+</tr>
+</tbody></table>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request is bad, and you should feel bad.</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing the mutant ID parameter.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error. You might have provided an invalid or blank mutant ID.</td>
+</tr>
+</tbody></table>
+
+          <h2 id="delete-a-specific-enrollment">Delete a Specific Enrollment</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1/terms/2/enrollments/17</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+
+
+</code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/17"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># Enrollments#destroy (DELETE )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/17'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Delete</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Enrollments#destroy (DELETE https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/17)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/terms/2/enrollments/17"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"DELETE"</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>204 No Content</strong>.</p>
+</blockquote>
+
+<p>This endpoint deletes a specific enrollment for a specific term.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://mutant-school.herokuapp.com/api/v1/terms/&lt;TERM_ID&gt;/enrollments/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TERM_ID</td>
+<td>The ID of the term of enrollment.</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the enrollment to delete.</td>
+</tr>
+</tbody></table>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; Either the term cannot be found, the enrollment cannot be found (possibly because it was already deleted), or the enrollment is not associated with the term.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; It&rsquo;s probably our fault.</td>
+</tr>
+</tbody></table>
+
+          <h1 id="advisees">Advisees</h1>
+
+<aside class="notice">Some mutants are advisors. To create the relationship between advisor and student (both of whom are mutants), create an <em>advisee</em> under the advisor.</aside>
+
+<h2 id="get-all-advisee-mutants-for-a-specific-advisor-mutant">Get All Advisee Mutants for a Specific Advisor Mutant</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/api/v1/mutants/2/advisees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+
+
+</code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># My API (GET )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// My API (GET https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>200 OK</strong>, with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fusionraptor"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating small, controlled fusion reactions"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clarice Sloan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all <em>advisee mutants</em> for the specified <em>advisor mutant</em>.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ADVISOR_ID&gt;/advisees</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ADVISOR_ID</td>
+<td>The ID of the advisor mutant</td>
+</tr>
+</tbody></table>
+
+          <h2 id="create-an-advisor-advisee-relationship">Create an Advisor-Advisee Relationship</h2>
+<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/api/v1/mutants/2/advisees</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">22</span>
+
+<span class="p">{</span><span class="nt">"advisee"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">}}</span><span class="w">
+</span></code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees"</span> <span class="se">\</span>
+    -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">advisee</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">4</span><span class="se">\"</span><span class="s2">}}"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># My API (2) (POST )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+    <span class="n">dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"advisee"</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="s2">"4"</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="c1"># Add headers</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/json"</span>
+    <span class="c1"># Set header and body</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"application/json"</span>
+    <span class="n">req</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="n">body</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// My API (2) (POST https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees)</span>
+
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="s2">"advisee"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"4"</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>201 Created</strong>, with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Megamarie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super-human strength"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:27:10.292Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:28:13.837Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/4"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"advisor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Superdave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flight"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dave"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-02T21:24:45.964Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-02T21:24:45.964Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint establishes an advisor-advisee relationship between two mutants.</p>
+
+<aside class="warning">Can advisors be assigned before their <em>may_advise_beginning_at</em> date? Seems like they shouldn&rsquo;t be able to. Is that being compared to the enrollment start date, or what? I don&rsquo;t think I get it. <em>&mdash; Boss Person</em></aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ADVISOR_ID&gt;/advisees</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ADVISOR_ID</td>
+<td>The ID of the advisor mutant</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload">Payload</h3>
+
+<p>May be sent as any of the following:</p>
+
+<ul>
+<li><code class="prettyprint">application/json</code> (shown in example code)</li>
+<li><code class="prettyprint">application/x-www-form-urlencoded</code></li>
+<li><code class="prettyprint">multipart/form-data</code></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>advisee[id]</td>
+<td>yes</td>
+<td>The ID of the mutant whose advisor is specified by ADVISOR_ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; Either the mutant cannot be found, the enrollment cannot be found (possibly because it was already deleted), or the enrollment is not associated with the mutant.</td>
+<td>Not Found &ndash; Either the advisor mutant or the advisee mutant cannot be found.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error. You might have provided an invalid or blank advisee ID.</td>
+</tr>
+</tbody></table>
+
+          <h2 id="delete-an-advisor-advisee-relationship">Delete an Advisor-Advisee relationship</h2>
+<pre class="highlight http"><code><span class="nf">DELETE</span> <span class="nn">/api/v1/mutants/2/advisees/4</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">mutant-school.herokuapp.com</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest</span>
+
+
+</code></pre>
+<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees/4"</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'net/https'</span>
+
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="c1"># My API (3) (DELETE )</span>
+
+  <span class="k">begin</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://mutant-school.herokuapp.com/api/v1/mutants/2/advisees/4'</span><span class="p">)</span>
+
+    <span class="c1"># Create client</span>
+    <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_PEER</span>
+
+
+    <span class="c1"># Create Request</span>
+    <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Delete</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+
+    <span class="c1"># Fetch Request</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+    <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+
+<blockquote>
+<p>Expected response: <strong>200 OK</strong>, with JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mutant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Megamarie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"power"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super-human strength"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"real_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marie"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:27:10.292Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-03T05:35:21.632Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eligibility_begins_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eligibility_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"may_advise_beginning_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mutant-school.herokuapp.com/api/v1/mutants/4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint removes an advisor-advisee relationship between two mutants. No records are destroyed. Rather, the advisee&rsquo;s record is updated with a NULL advisor.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://mutant-school.herokuapp.com/api/v1/mutants/&lt;ADVISOR_ID&gt;/advisee/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ADVISOR_ID</td>
+<td>The ID of the advisor mutant</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the advisee mutant</td>
+</tr>
+</tbody></table>
+
+<h3 id="errors">Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; Either the advisor mutant or the advisee mutant cannot be found, or there is no such relationship between the two.</td>
 </tr>
 <tr>
 <td>500</td>
