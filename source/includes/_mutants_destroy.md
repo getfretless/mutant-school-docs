@@ -63,7 +63,7 @@ jQuery.ajax({
 
 > Expected response: **204 No Content**.
 
-This deletes a specific mutant and any associated enrollments.
+This deletes a specific mutant and any associated enrollments. If the mutant was an advisor, the advisees' records are updated to nullify the advisor relationship.
 
 ### HTTP Request
 

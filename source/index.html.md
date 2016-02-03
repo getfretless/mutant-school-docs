@@ -20,7 +20,11 @@ includes:
   - terms_show
   - terms_create
   - terms_update
-  - mutants_destroy
+  - terms_destroy
+  - enrollments_index
+  - enrollments_show
+  - enrollments_create
+  - enrollments_destroy
 
 
 search: true

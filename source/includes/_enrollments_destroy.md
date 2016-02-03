@@ -1,15 +1,16 @@
-## Get a Specific Term
+## Delete a Specific Enrollment
 
 ```http
-GET /api/v1/terms/3 HTTP/1.1
+DELETE /api/v1/mutants/1/enrollments/10 HTTP/1.1
 Host: mutant-school.herokuapp.com
 Connection: close
 User-Agent: Paw/2.2.9 (Macintosh; OS X/10.11.2) GCDHTTPRequest
 
+
 ```
 
 ```shell
-curl -X "GET" "https://mutant-school.herokuapp.com/api/v1/terms/3"
+curl -X "DELETE" "https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/10"
 ```
 
 ```ruby
@@ -17,10 +18,10 @@ require 'net/http'
 require 'net/https'
 
 def send_request
-  # Terms#show (GET )
+  # Enrollments#destroy (DELETE )
 
   begin
-    uri = URI('https://mutant-school.herokuapp.com/api/v1/terms/3')
+    uri = URI('https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/10')
 
     # Create client
     http = Net::HTTP.new(uri.host, uri.port)
@@ -29,7 +30,7 @@ def send_request
 
 
     # Create Request
-    req =  Net::HTTP::Get.new(uri)
+    req =  Net::HTTP::Delete.new(uri)
 
     # Fetch Request
     res = http.request(req)
@@ -42,11 +43,11 @@ end
 ```
 
 ```javascript
-// Terms#show (GET https://mutant-school.herokuapp.com/api/v1/terms/3)
+// Enrollments#destroy (DELETE https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/10)
 
 jQuery.ajax({
-    url: "https://mutant-school.herokuapp.com/api/v1/terms/3",
-    type: "GET",
+    url: "https://mutant-school.herokuapp.com/api/v1/mutants/1/enrollments/10",
+    type: "DELETE",
 })
 .done(function(data, textStatus, jqXHR) {
     console.log("HTTP Request Succeeded: " + jqXHR.status);
@@ -60,34 +61,25 @@ jQuery.ajax({
 });
 ```
 
-> The above command returns JSON structured like this:
+> Expected response: **204 No Content**.
 
-```json
-{
-  "id": 3,
-  "begins_at": "2016-08-10T00:00:00.000Z",
-  "ends_at": "2016-12-25T00:00:00.000Z",
-  "created_at": "2016-02-02T21:26:26.496Z",
-  "updated_at": "2016-02-02T21:26:26.496Z"
-}
-```
-
-This endpoint retrieves a specific term.
+This endpoint retrieves a specific enrollment for a specific mutant.
 
 ### HTTP Request
 
-`GET https://mutant-school.herokuapp.com/api/v1/terms/<ID>`
+`DELETE https://mutant-school.herokuapp.com/api/v1/mutants/<MUTANT_ID>/enrollments/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID        | The ID of the term to retrieve
+MUTANT_ID | The ID of the enrolled mutant
+ID        | The ID of the enrollment to delete
 
 ### Errors
 
 Error Code | Meaning
 ---------- | -------
 400        | Bad Request -- Your request is bad, and you should feel bad.
-404        | Not Found -- The specified term could not be found.
+404        | Not Found -- Either the mutant cannot be found, the enrollment cannot be found (possibly because it was already deleted), or the enrollment is not associated with the mutant.
 500        | Internal Server Error -- It's probably our fault.
