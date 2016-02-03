@@ -95,6 +95,8 @@ jQuery.ajax({
 
 This endpoint retrieves all enrollments for the specified mutant.
 
+<aside class="warning">While I'm thinking about it, don't let me catch you trying to use that ridiculous <em>smoosh</em> thing in these tests. What were you thinking with that thing? You and your "monkey patching." I swear. <em>&mdash; Boss Person</em></aside>
+
 ### HTTP Request
 
 `GET https://mutant-school.herokuapp.com/api/v1/mutants/<MUTANT_ID>/enrollments`

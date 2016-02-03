@@ -8,7 +8,7 @@ language_tabs:
   - javascript: JS/jQuery
 
 toc_footers:
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - From your friends at Mutantcorp.
 
 includes:
   - mutants_index
