@@ -73,12 +73,11 @@ This deletes a specific mutant and any associated enrollments. If the mutant was
 
 Parameter | Description
 --------- | -----------
-ID        | The ID of the mutant to update
+ID        | The ID of the mutant to delete
 
 ### Errors
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
-404        | Not Found -- The specified mutant could not be found. It may have already been deleted.
+404        | Not Found -- There's no mutant with that ID. It may have already been deleted.
 500        | Internal Server Error -- It's probably our fault.

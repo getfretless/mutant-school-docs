@@ -1,4 +1,4 @@
-# Enrollments
+# Enrollments by Mutant
 
 <aside class="notice">Enrollments are, essentially, a relationship between a mutant and a term, indicating that the mutant has enrolled as a student for the given term.</aside>
 

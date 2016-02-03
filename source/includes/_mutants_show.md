@@ -106,6 +106,5 @@ ID        | The ID of the mutant to retrieve
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad
-404        | Not Found -- The specified mutant could not be found
+404        | Not Found -- There's no mutant with that ID.
 500        | Internal Server Error -- It's probably our fault.

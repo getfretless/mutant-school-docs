@@ -63,7 +63,7 @@ jQuery.ajax({
 
 > Expected response: **204 No Content**.
 
-This endpoint retrieves a specific enrollment for a specific mutant.
+This endpoint deletes a specific enrollment for a specific mutant.
 
 ### HTTP Request
 
@@ -80,6 +80,5 @@ ID        | The ID of the enrollment to delete
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
 404        | Not Found -- Either the mutant cannot be found, the enrollment cannot be found (possibly because it was already deleted), or the enrollment is not associated with the mutant.
 500        | Internal Server Error -- It's probably our fault.

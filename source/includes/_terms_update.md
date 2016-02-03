@@ -103,6 +103,7 @@ This endpoint updates a specific term.
 ### HTTP Request
 
 `PUT https://mutant-school.herokuapp.com/api/v1/terms/<ID>`
+
 `PATCH https://mutant-school.herokuapp.com/api/v1/terms/<ID>`
 
 ### URL Parameters
@@ -111,7 +112,13 @@ Parameter | Description
 --------- | -----------
 ID        | The ID of the term to update
 
-### Query Parameters
+### Payload
+
+May be sent as any of the following:
+
+* `application/json` (shown in example code)
+* `application/x-www-form-urlencoded`
+* `multipart/form-data`
 
 Parameter        | Required | Description
 ---------        | -------  | -----------
@@ -122,6 +129,6 @@ term[ends_at]    | no      | Date when the term ends
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
+400        | Bad Request -- Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.
 422        | Unprocessable Entity -- Probably a data validation error. Check response for details. Sample response: <br><code>{"ends_at":["can't be blank"]}</code>
 500        | Internal Server Error -- It's probably our fault.

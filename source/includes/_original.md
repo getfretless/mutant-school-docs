@@ -82,7 +82,7 @@ This endpoint retrieves all kittens.
 
 `GET http://example.com/api/kittens`
 
-### Query Parameters
+### Payload
 
 Parameter | Default | Description
 --------- | ------- | -----------

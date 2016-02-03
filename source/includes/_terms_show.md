@@ -88,6 +88,5 @@ ID        | The ID of the term to retrieve
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
 404        | Not Found -- The specified term could not be found.
 500        | Internal Server Error -- It's probably our fault.

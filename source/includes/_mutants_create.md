@@ -120,7 +120,13 @@ This endpoint creates a new mutant.
 
 `POST https://mutant-school.herokuapp.com/api/v1/mutants`
 
-### Query Parameters
+### Payload
+
+May be sent as any of the following:
+
+* `application/json` (shown in example code)
+* `application/x-www-form-urlencoded`
+* `multipart/form-data`
 
 Parameter                       | Required | Description
 ---------                       | -------  | -----------
@@ -128,13 +134,13 @@ mutant[real_name]               | yes      | Legal name
 mutant[mutant_name]             | yes      | Preferred name
 mutant[power]                   | yes      | Superpower
 mutant[eligibility_begins_at]   | no       | Date when eligibility to enroll begins
-mutant[eligibility_ends_at]     | no       | Date when mutant is no longer eligible to enroll; must be a date that occurs after `eligibility_begins_at`
+mutant[eligibility_ends_at]     | no       | Date when mutant is no longer eligible to enroll; must be a date that occurs after mutant[eligibility_begins_at]
 mutant[may_advise_beginning_at] | no       | Mutant may be an advisor to students on or after this date.
 
 ### Errors
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
+400        | Bad Request -- Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.
 422        | Unprocessable Entity -- Probably a data validation error. Check response for details. Sample response: <br><code>{"power":["can't be blank"],"eligibility_ends_at":["is before the eligibility start date"]}</code>
 500        | Internal Server Error -- It's probably our fault.

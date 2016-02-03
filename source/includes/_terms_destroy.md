@@ -79,6 +79,5 @@ ID        | The ID of the term to delete
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
 404        | Not Found -- The specified term could not be found. It may have already been deleted.
 500        | Internal Server Error -- It's probably our fault.

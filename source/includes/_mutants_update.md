@@ -110,6 +110,7 @@ This updates a specific mutant.
 ### HTTP Request
 
 `PUT https://mutant-school.herokuapp.com/api/v1/mutants/<ID>`
+
 `PATCH https://mutant-school.herokuapp.com/api/v1/mutants/<ID>`
 
 ### URL Parameters
@@ -118,7 +119,13 @@ Parameter | Description
 --------- | -----------
 ID        | The ID of the mutant to update
 
-### Query Parameters
+### Payload
+
+May be sent as any of the following:
+
+* `application/json` (shown in example code)
+* `application/x-www-form-urlencoded`
+* `multipart/form-data`
 
 Parameter                       | Required | Description
 ---------                       | -------  | -----------
@@ -133,7 +140,7 @@ mutant[may_advise_beginning_at] | no       | Mutant may be an advisor to student
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad.
-404        | Not Found -- The specified mutant could not be found.
+400        | Bad Request -- Your request is bad, and you should feel bad. You could be missing parameters, or the parameters are malformed.
+404        | Not Found -- There's no mutant with that ID.
 422        | Unprocessable Entity -- Probably a data validation error. Check response for details. Sample response: <br><code>{"power":["can't be blank"],"eligibility_ends_at":["is before the eligibility start date"]}</code>
 500        | Internal Server Error -- It's probably our fault.

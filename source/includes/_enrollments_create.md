@@ -113,6 +113,8 @@ jQuery.ajax({
 
 This endpoint enrolls a mutant in a term.
 
+<aside class="warning">Is this goofy system letting students enroll in terms that start before they're eligible or after they've become ineligible? We should test for that. <em>&mdash; Boss Person</em></aside>
+
 ### HTTP Request
 
 `POST https://mutant-school.herokuapp.com/api/v1/mutants/<MUTANT_ID>/enrollments`
@@ -123,7 +125,13 @@ Parameter | Description
 --------- | -----------
 MUTANT_ID | The ID of the mutant to be enrolled.
 
-### Query Parameters
+### Payload
+
+May be sent as any of the following:
+
+* `application/json` (shown in example code)
+* `application/x-www-form-urlencoded`
+* `multipart/form-data`
 
 Parameter            | Required | Description
 ---------            | -------  | -----------
@@ -133,5 +141,5 @@ enrollment[term_id]  | yes      | The ID of the term in which to enroll the muta
 
 Error Code | Meaning
 ---------- | -------
-400        | Bad Request -- Your request is bad, and you should feel bad. You could be missing parameters.
+400        | Bad Request -- Your request is bad, and you should feel bad. You could be missing the term ID parameter, or the term ID could be invalid.
 500        | Internal Server Error. You might have provided an invalid or blank term ID.
